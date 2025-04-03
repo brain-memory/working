@@ -8,15 +8,19 @@
 
     function noop() {};
 
+    function keyFromArgs(args) {
+        return args.join(',')
+    }
+
     class WorkingBuilders {
         static callable(memo, callback) {
             return function(...args) {
-                let joinedArgs = args.join(',');
-                if(memo.hasRecord(joinedArgs)) {
-                    return memo.recall(joinedArgs)
+                let key = keyFromArgs(args);
+                if(memo.hasRecord(key)) {
+                    return memo.recall(key)
                 }
                 let result = callback(...args);
-                memo.record(joinedArgs, result);
+                memo.record(key, result);
                 return result;
             }
         }
@@ -25,6 +29,28 @@
             return function(condition = true) {
                 if(condition == true) {
                     memo.forgetAll();
+                }
+            }
+        }
+
+        static unset(memo) {
+            return function(...args) {
+                memo.forget(keyFromArgs(args));
+            }
+        }
+
+        static unsetLast(memo) {
+            return function(condition = true) {
+                if(condition == true) {
+                    memo.forget(Object.keys(memo.recallAll()).reverse()[1])
+                }
+            }
+        }
+
+        static keepLast(memo) {
+            return function(condition = true) {
+                if(condition == true) {
+                    memo.forgetExcept(Object.keys(memo.recallAll()).reverse()[1])
                 }
             }
         }
@@ -42,6 +68,9 @@
         build() {
             let callable = WorkingBuilders.callable(this.memo, this.callback);
             callable.reset = WorkingBuilders.reseter(this.memo);
+            callable.unset = WorkingBuilders.unset(this.memo);
+            callable.unsetLast = WorkingBuilders.unsetLast(this.memo);
+            callable.keepLast = WorkingBuilders.keepLast(this.memo);
             return callable
         }
     }
