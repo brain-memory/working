@@ -2,23 +2,44 @@
 
     function noop() {};
 
-    b.working = function(key, callback = noop) {
-        const memo = BrainMemory.temporary('__working__' +   key);
-        
-        let callable = function(...args) {
-            if(memo.hasRecord(args.join(','))) {
-                return memo.recall(args.join(','))
+    class WorkingBuilders {
+        static callable(memo, callback) {
+            return function(...args) {
+                if(memo.hasRecord(args.join(','))) {
+                    return memo.recall(args.join(','))
+                }
+                let result = callback(...args);
+                memo.record(args.join(','), result);
+                return result;
             }
-            let result = callback(...args);
-            memo.record(args.join(','), result);
-            return result;
         }
 
-        callable.reset = function() {
-            memo.forgetAll();
+        static reseter(memo) {
+            return function(condition = false) {
+                if(condition == true) {
+                    memo.forgetAll();
+                }
+            }
+        }
+    }
+
+    class Working {
+        constructor(key, callback = noop) {
+            this.memo = BrainMemory.temporary('__working__' +   key);
+            this.callback = callback;
         }
 
-        return callable;
+        build() {
+            let callable = WorkingBuilders.callable(this.memo, this.callback);
+
+            callable.reset = WorkingBuilders.reseter(this.memo);
+
+            return callable
+        }
+    }
+
+    b.working = function(key, callback) {
+        return new Working(key, callback).build();
     }
 
 }(BrainMemory));
