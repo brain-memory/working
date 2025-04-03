@@ -5,11 +5,12 @@
     class WorkingBuilders {
         static callable(memo, callback) {
             return function(...args) {
-                if(memo.hasRecord(args.join(','))) {
-                    return memo.recall(args.join(','))
+                let joinedArgs = args.join(',');
+                if(memo.hasRecord(joinedArgs)) {
+                    return memo.recall(joinedArgs)
                 }
                 let result = callback(...args);
-                memo.record(args.join(','), result);
+                memo.record(joinedArgs, result);
                 return result;
             }
         }
