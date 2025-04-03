@@ -1,5 +1,11 @@
 ;(function(b) {
 
+    "use strict"
+
+    if(b == null) {
+        return;
+    }
+
     function noop() {};
 
     class WorkingBuilders {
@@ -32,9 +38,7 @@
 
         build() {
             let callable = WorkingBuilders.callable(this.memo, this.callback);
-
             callable.reset = WorkingBuilders.reseter(this.memo);
-
             return callable
         }
     }
