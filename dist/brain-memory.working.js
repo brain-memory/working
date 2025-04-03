@@ -22,7 +22,7 @@
         }
 
         static reseter(memo) {
-            return function(condition = false) {
+            return function(condition = true) {
                 if(condition == true) {
                     memo.forgetAll();
                 }
@@ -31,8 +31,11 @@
     }
 
     class Working {
+
+        TEMP_WORKING_PREFIX = "__temp_working__";
+
         constructor(key, callback = noop) {
-            this.memo = BrainMemory.temporary('__working__' +   key);
+            this.memo = BrainMemory.temporary(this.TEMP_WORKING_PREFIX +   key);
             this.callback = callback;
         }
 
