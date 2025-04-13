@@ -38,22 +38,6 @@
                 memo.forget(keyFromArgs(args));
             }
         }
-
-        static unsetLast(memo) {
-            return function(condition = true) {
-                if(condition == true) {
-                    memo.forget(Object.keys(memo.recallAll()).reverse()[1])
-                }
-            }
-        }
-
-        static keepLast(memo) {
-            return function(condition = true) {
-                if(condition == true) {
-                    memo.forgetExcept(Object.keys(memo.recallAll()).reverse()[1])
-                }
-            }
-        }
     }
 
     class Working {
@@ -61,7 +45,7 @@
         TEMP_WORKING_PREFIX = "__temp_working__";
 
         constructor(key, callback = noop) {
-            this.memo = BrainMemory.temporary(this.TEMP_WORKING_PREFIX +   key);
+            this.memo = BrainMemory.temporary(this.TEMP_WORKING_PREFIX + key);
             this.callback = callback;
         }
 
@@ -69,8 +53,6 @@
             let callable = WorkingBuilders.callable(this.memo, this.callback);
             callable.reset = WorkingBuilders.reseter(this.memo);
             callable.unset = WorkingBuilders.unset(this.memo);
-            callable.unsetLast = WorkingBuilders.unsetLast(this.memo);
-            callable.keepLast = WorkingBuilders.keepLast(this.memo);
             return callable
         }
     }
