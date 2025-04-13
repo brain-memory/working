@@ -1,4 +1,3 @@
-```markdown
 # 🧠 working - A Brain Memory Plugin
 
 **`working`** is a simple and efficient plugin for the [`brain-memory`](https://github.com/brain-memory/brain-memory) library that helps you **cache** function results in a temporary memory store, making your code faster and more efficient. It is designed to make memoization easy by automatically handling the caching and invalidation of function results.
@@ -22,8 +21,6 @@ Ensure you have the [`brain-memory`](https://github.com/brain-memory/brain-memor
     ```
 
 After including the plugin, `working()` will be globally available for use in your JavaScript code.
-
----
 
 ## 🚀 Quick Example
 
