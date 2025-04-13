@@ -161,7 +161,7 @@ You can help by adding:
 
 ## 🧠 Made for [brain-memory](https://github.com/brain-memory/brain-memory)
 
-This plugin is built on top of the awesome [brain-memory](https://github.com/brain-memory/brain-memory) library, which provides an easy-to-use in-memory storage system for JavaScript.
+This plugin , built by [Amine Amazou](https://github.com/amine-amazou), is built on top of the awesome [brain-memory](https://github.com/brain-memory/brain-memory) library, which provides an easy-to-use in-memory storage system for JavaScript.
 
 ---
 
