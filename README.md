@@ -1,6 +1,6 @@
-# 🧠 working - A Brain Memory Plugin
+# 🧠 Working - A Brain Memory Plugin
 
-**`working`** is a simple and efficient plugin for the [`brain-memory`](https://github.com/brain-memory/brain-memory) library that helps you **cache** function results in a temporary memory store, making your code faster and more efficient. It is designed to make memoization easy by automatically handling the caching and invalidation of function results.
+**`Working`** is a simple and efficient plugin for the [`brain-memory`](https://github.com/brain-memory/brain-memory) library that helps you **cache** function results in a temporary memory store, making your code faster and more efficient. It is designed to make memoization easy by automatically handling the caching and invalidation of function results.
 
 ---
 
