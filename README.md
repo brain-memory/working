@@ -11,13 +11,13 @@ Ensure you have the [`brain-memory`](https://github.com/brain-memory/brain-memor
 1. Include `brain-memory` by adding the following script to your HTML:
 
     ```html
-    <script src="https://cdn.jsdelivr.net/gh/brain-memory@latest/brain-memory/dist/brain-memory.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/brain-memory/brain-memory@latest/dist/brain-memory.js"></script>
     ```
 
 2. Include the `working` plugin by adding the following script to your HTML:
 
     ```html
-    <script src="https://cdn.jsdelivr.net/gh/brain-memory@latest/working/dist/brain-memory.working.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/brain-memory/working@latest/dist/brain-memory.working.js"></script>
     ```
 
 After including the plugin, `working()` will be globally available for use in your JavaScript code.
