@@ -168,5 +168,3 @@ This plugin , built by [Amine Amazou](https://github.com/amine-amazou), is built
 ## License
 
 MIT License. See [LICENSE](./LICENSE) for more details.
-
-```
